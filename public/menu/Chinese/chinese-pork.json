@@ -1,0 +1,52 @@
+[
+    {
+        "name" : "Pork Peking  Style" ,
+        "description" : " pork chops that are coated in a flour agent and then fried until crispy brown." ,
+        "price" : "950" ,
+        "imagePath" : ""
+    } ,
+    {
+        "name" : "Sweet & Sour Pork" ,
+        "description" : "sweet and sour pork stir-fry recipe made with juicy pieces of pork tenderloin, bell peppers, onion, and pineapple." ,
+        "price" : "800" ,
+        "imagePath" : ""
+    } , 
+    {
+        "name" : "Moo Shu Pork" ,
+        "description" : "sliced pork tenderloin, cucumber, and scrambled eggs, stir fried in lard together with bite-sized cuttings of wood ear mushrooms (black fungus) and enoki mushrooms." ,
+        "price" : "1450" ,
+        "imagePath" : ""
+
+    } ,
+    {
+        "name" : "Hunan Pork ( spicy )",
+        "description" : "Fatty pork slices, hot chili pepper, fermented black beans." ,
+        "price" : "1450" , 
+        "imagePath" : ""
+    } ,
+    {
+        "name" : "Pork with mixed vegetables ( spicy )" ,
+        "description" : "pork cooked with mixed spices and vegetables." , 
+        "price" : "1250" , 
+        "imagePath" : ""
+    } , 
+    {
+        "name" : "Spicy BBQ pork ( spicy )" ,
+        "description" : "Pork cooked with a touch of gravy with hot chillies" ,
+        "price" : "1550" ,
+        "imagePath" : ""
+    },
+    {
+        "name" : "Szechuan Pork" ,
+        "description" : "Tender pork loin, crispy vegetables, and a spicy sauce." , 
+        "price" : "1350" ,
+        "imagePath" : ""
+    } ,
+    {
+        "name" : "Twice Cooked Pork" , 
+        "description" : "porksimmered, sliced, and then stir-fried with chilli bean paste and fermented black beans & vegetables, such as leek, green garlic, fresh chili, etc." ,
+        "price" : "1250" ,
+        "imagePath" : ""
+     }
+
+]

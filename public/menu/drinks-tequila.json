@@ -1,0 +1,26 @@
+[
+    {
+        "name" : "Olemeca Blanco Tequila" ,
+        "price" : "290/580"
+    } ,
+    {
+        "name" : "Olmeca Gold Tequilla" ,
+        "price" : "310/620"
+    } ,
+    {
+        "name" : "Sauza Silver" ,
+        "price" : "310/620"
+    } , 
+    {
+        "name" : "Sauza Special Gold" ,
+        "price" : "350/700"
+    } ,
+    {
+        "name" : "Veet & Vibe" ,
+        "price": "560/1120"
+    } ,
+    {
+        "name" : "Peechtree" ,
+        "price" : "285/570"
+    }
+]

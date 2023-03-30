@@ -1,0 +1,26 @@
+[
+    {
+        "name" : "lenfiddich 12yrs" ,
+        "price" : "415/830"
+    } ,
+    {
+        "name" : "Glenfiddich 18yrs" ,
+        "price" : "850/1700"
+    } ,
+    {
+        "name" : "Glenmorangie 10yrs" ,
+        "price" : "470/940"
+    } ,
+    {
+        "name" : "Ballantines 12yrs" ,
+        "price" : "350/700" 
+    } ,
+    {
+        "name" : "JW Double Black" ,
+        "price" : "390/780"
+    } ,
+    {
+        "name" : "The Macallan Select Oak" ,
+        "price" : "755/1500"
+    }
+]

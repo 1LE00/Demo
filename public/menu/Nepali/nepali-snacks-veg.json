@@ -1,0 +1,38 @@
+[
+    {
+        "name" : "Paneer Pakoda" ,
+        "description" : "Batter frying Indian cottage cheese aka paneer." ,
+        "price" : "550" ,
+        "imagePath" : ""
+    },
+    {
+        "name" : " Veg Pakoda" ,
+        "description" : "A spiced fritter originating from the Indian subcontinent." ,
+        "price" : "320" ,
+        "imagePath" : ""
+    },
+    {
+        "name" : "Aloo Tareko" ,
+        "description" : "Fried Potatoes with garnishing. " ,
+        "price" : "275" ,
+        "imagePath" :""
+    },
+    {
+        "name" : "Kaju Fry" ,
+        "description" : "Cashew nuts fried with spices and garnishing." ,
+        "price" : "1025" ,
+        "imagePath" : ""
+    },
+    {
+        "name" : "Aloo Sandeko" ,
+        "description" : "Boiled potatoes with spicy and sour taste." ,
+        "price" : "275" ,
+        "imagePath" : "" 
+    },
+    {
+        "name" : "Green Salad" ,
+        "description" : "Basic Salad with vagetables",
+        "price" : "275" ,
+        "imagePath" : ""
+    }   
+]

@@ -1,0 +1,77 @@
+[
+    {
+        "name" : "Hot Lemon" ,
+        "price" : "80" ,
+        "imagePath" : ""
+    } ,
+    {
+        "name" : "Tea(Black/Milk)" ,
+        "price" : "60/100" ,
+        "imagePath" : ""
+    },
+    {
+        "name" : "Coffee(Black/Milk)" ,
+        "price" : "100/150" ,
+        "imagePath" : ""
+    },
+    {
+        "name" : "Affogato" ,
+        "description" : "Espresso poured on a vanilla ice cream. Served in a cappuccino cup." ,
+        "price" : " 550" ,
+        "imagePath" :""
+    },
+    {
+        "name" : "Cappuccino" ,
+        "description" : "Espresso combined with steam milk & a smooth topping of foam" ,
+        "price" : "300" ,
+        "imagePath" :""
+    },
+    {
+        "name" : "Cafe Latte" ,
+        "description" : "Espresso combined with steamed milk & topped with a small amount of small veivety milk foam." ,
+        "price" : "510" ,
+        "imagePath" : ""
+    } ,
+    {
+        "name" : "Cafe Mocha" ,
+        "description" : "Espresso, white chocolate , steamed milk topped with foam." ,
+        "price" : "480" ,
+        "imagePath" : ""
+    },
+    {
+        "name" : "Vanilla Latte" ,
+        "description" : "Espresso,vanilla syrup, steamed milk." ,
+        "price" : "580" ,
+        "imagePath" : ""
+    } ,
+    {
+        "name" : "Espresso Shot(single/double)" , 
+        "description" : "straight shot of espresso" ,
+        "price" : "250/350" ,
+        "imagePath" : ""
+    } ,
+    {
+        "name" : "Amaretto Bean Latte" , 
+        "description" : "Espresso, amaretto & vanilla bean syrup steamed milk topped with whipped cream and drizzled with caramel sauce." ,
+        "price" : "650" ,
+        "imagePath" :""
+    } , 
+    {
+        "name" : "Cinnamon Bun Latte" , 
+        "description" : " Espresso, French vanilla & Caramel syrup steamed milk, topped with whipped cream, drizzled with caramels sauce." ,
+        "price" : "650" ,
+        "imagePath" : ""
+    } ,
+    {
+        "name" : "White Chocolate Caramella" ,
+        "description" : "Espresso, caramel & white chocolate sauce, steamed milk, topped with whipped cream & shaved white chocolate." ,
+        "price" : "700" ,
+        "imagePath" : ""
+    } ,
+    {
+        "name" : "Hot Chocolate" ,
+        "price" :"430" ,
+        "imagePath" : ""
+    }
+    
+]

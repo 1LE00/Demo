@@ -1,0 +1,53 @@
+[
+    {
+        "name" : "Cosmopolitan" ,
+        "description" : "Vodka, Cointreau, Lemon & Cranberry" ,
+        "price" : "600" 
+    } ,
+    {
+        "name" : "KamiKaze" ,
+        "description" : "Vodka, Cointreau & Lemon" ,
+        "price" : "500"
+    } ,
+    {
+        "name" :"Caprioska" ,
+        "description" : "Vodka, Sugar syrup & Lemon Chunk" ,
+        "price" : " 500" 
+    } ,
+    {
+        "name" :"Manhattan" ,
+        "description" : "Whiskey & Sweet vermouth" ,
+        "price" : "625"
+    } ,
+    {
+        "name" : "Mojito" ,
+        "description" : "Rum, Mint, Lemon & Sugar syrup" ,
+        "price" : "625" 
+    } ,
+    {
+        "name" : "Pinacolada" ,
+        "description" : "Rum, Pineapple, Malibu & Coconut" ,
+        "price" : "625" 
+    } ,
+    {
+        "name" : "Silver Margarita" ,
+        "description" : "Tequila silver, triple sec & Lemon" ,
+        "price" : 830
+    } ,
+    {
+        "name" : "Dry Martini" ,
+        "description" : "Gin, & Dry Vermouth" ,
+        "price" : "500"
+    } ,
+    {
+        "name" : "B52" ,
+        "description" : "Bailey, Kahlua & Triple sec" ,
+        "price" : "625" 
+    } ,
+    {
+        "name" : "Frozen Strawberry Daiquiri" ,
+        "description" : "Rum, Strawberry syrup/Liqueur & Lime" ,
+        "price" : "500"
+    }
+
+]

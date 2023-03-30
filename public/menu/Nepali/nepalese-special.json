@@ -1,0 +1,20 @@
+[
+    {
+        "name" : "Pulao" ,
+        "description" : " A special type of steamed rice served with many kinds of soup, vegetables and meat." ,
+        "price" : "1150" ,
+        "imagePath" : ""
+    } ,
+    {
+        "name" : "Ghundruk & Dhido Combo" ,
+        "description" : " Gundruk is a Dried leaf vegetables could be a soured inexperienced greens . It is typical Nepalese snack, claiming to be one among the national dishes." ,
+        "price" : "600" ,
+        "imagePath" : ""
+    } ,
+    {
+        "name" : "Pani Puri" ,
+        "description" : "Panipuri, phuchka, gupchup, golgappa, or pani ke patashe is a type of snack originating in the Indian subcontinent, where it is an extremely common street food." ,
+        "price" : "150 per plate" ,
+        "imagePath" : ""
+    }
+]

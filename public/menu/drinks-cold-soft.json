@@ -1,0 +1,73 @@
+[
+    {
+        "name" : "Coke/Fanta/Sprite/Mouuntain Dew" ,
+        "price" : "100" ,
+        "imagePath" : ""
+    } ,
+    {
+        "name" : "Iced Latte" ,
+        "description" : "Chilled milk over ice, capped with freshly shaken espresso." ,
+        "price" : "380" ,
+        "imagePath" : ""
+    } ,
+    {
+        "name" : "Iced Cappuccino" ,
+        "description" : "A bold and balanced coffee, made with freshly shaken espresso and topped with whipped milk foam." ,
+        "price" : "550" ,
+        "imagePath" : ""
+    } , 
+    {
+        "name" : "Iced Americano Black" ,
+        "description" : "Classic black coffee gently sweetened and served over ice." ,
+        "price" : "300" ,
+        "imagePath" : ""
+    } ,
+    {
+        "name" : "Iced Mocha" ,
+        "description" : "An indulgent iced coffee made with a delicious chocolate sauce freshly shaken with espresso and poured over iced cold milk for a caffeinated chocolate treat." ,
+        "price" : "450" ,
+        "imagePath" : ""
+    } ,
+    {
+        "name" : "Strawberry Lemonade" ,
+        "description" : "An amazing summer drink with the taste of fresh ripe strawberries and tangy zesty lemon." ,
+        "price" : "400" ,
+        "imagePath" : ""
+    } ,
+    {
+        "name" : "Caramel Frappe" , 
+        "description" : "Caramel flavor with a hint of coffee & is topped with whipped topping & caramel drizzle." ,
+        "price" : "650" ,
+        "imagePath" : ""
+    } ,
+    {
+        "name" : " Mocha Frappe" , 
+        "description" : "Blended with ice and topped with whipped light cream and chocolatey drizzle. " ,
+        "price" : "500" ,
+        "imagePath" : ""
+    } ,
+    {
+        "name" : "Tropical Mango Smoothie" ,
+        "description" : "Smoothie with banana, mango, pineapple, orange juice , coconut and milk." ,
+        "price" : "650" ,
+        "imagePath" : ""
+    } ,
+    {
+        "name" : "Berry Burst" ,
+        "description" : "Smoothie with banana, black berries, raspberries, blueberries or mixed berries and oat milk." ,
+        "price" : "700" ,
+        "imagePath" : ""
+    } ,
+    {
+        "name" : "Strawberry Spin" ,
+        "description" : "Banana, strawberries and oat milk." ,
+        "price" : "450" ,
+        "imagePath" : ""
+    } ,
+    {
+        "name" : "Maven" ,
+        "description" : "Mango, strawberry, pineapple,mint,coconut,applejuice" ,
+        "price" : "480" ,
+        "imagePath" : ""
+    }
+]
