@@ -129,9 +129,18 @@
     color: hsl(var(--clr-white));
     padding-inline: 0.5rem;
   }
-  
-  ::-webkit-datetime-edit-year-field {
+
+  ::-webkit-datetime-edit-day-field:focus-within,::-webkit-datetime-edit-month-field:focus-within,::-webkit-datetime-edit-year-field:focus-within{
+    color: hsl(var(--clr-menu));
+    background-color: hsl(var(--clr-white));
+  }
+
+  ::-webkit-datetime-edit-year-field{
     color: hsl(var(--clr-white));
+  }
+
+  ::-webkit-calendar-picker-indicator:hover:invalid{
+    cursor: not-allowed;
   }
 
   ::-webkit-calendar-picker-indicator {
@@ -233,6 +242,10 @@
   :is(.select-container, .time-dropdown-container) .list .option:hover {
     background-color: hsl(var(--smoky-black-3));
   }
+
+  :is(.select-container, .time-dropdown-container) .list .option.selected:hover{
+    background-color: hsl(var(--clr-dark));
+  } 
 
   .error {
     font-size: 0.75rem;

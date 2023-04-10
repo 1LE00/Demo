@@ -42,6 +42,9 @@ const handleBooking = async (req, res) => {
   if (req.isAuthenticated()) {
     const user = await User.findOne({ username: req.user.username });
     await Booking.create({
+      name: user.name,
+      email: user.username,
+      contact: user.contact,
       numberOfGuest: guests,
       date: date,
       time: time,

@@ -1,7 +1,16 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const BookingSchema = new Schema({
+const bookingSchema = new Schema({
+  name:{
+    type: String
+  },
+  email:{
+    type: String
+  },
+  contact:{
+    type: Number
+  },
   numberOfGuest: {
     type: String
   },
@@ -16,6 +25,6 @@ const BookingSchema = new Schema({
   },
 });
 
-const Booking = mongoose.model("Booking", BookingSchema);
+const Booking = mongoose.model("Booking", bookingSchema);
 
 module.exports = Booking;

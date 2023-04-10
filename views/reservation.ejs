@@ -61,10 +61,16 @@
                                                 </span>
                                                 <span class="current select-current">
                                                     <% if (guest) { %>
-                                                        <%= guest %>
-                                                            <% } else { %>
+                                                        <% if (parseInt(guest) == 1) { %>
                                                                 1 person
-                                                                <% } %>
+                                                            <% } else if (parseInt(guest) >= 2 && parseInt(guest) <= 20) { %>
+                                                                <%= guest %> people
+                                                            <% } else { %>
+                                                                Larger Party
+                                                            <% } %>
+                                                    <% } else { %>
+                                                        1 person
+                                                    <% } %>
                                                 </span>
                                                 <span class="icon" id="select-icon">
                                                     <img class="inline" src="/images/icon-dropdown-indicator.svg"
@@ -99,8 +105,8 @@
                                     </div>
                                     <div class="date-container">
                                         <label for="date">Date</label>
-                                        <input type="date" name="date" id="date" value="<%= date %>">
-                                        <span id="date" name="alpha"></span>
+                                        <input type="date" name="date" id="date" value="<%= date %>"
+                                            pattern="\d{4}-\d{2}-\d{2}" required>
                                     </div>
 
                                     <div class="time-container">
@@ -160,7 +166,7 @@
                                     </div>
 
                                     <div class="btn inline">
-                                        <button class="uppercase w-100">Book a Table</button>
+                                        <button class="uppercase w-100" type="submit">Book a Table</button>
                                     </div>
                                 </form>
                                 <% } else { %>
