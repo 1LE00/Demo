@@ -86,6 +86,10 @@
     margin-block-end: 2rem;
   }
 
+  form {
+    position: relative;
+  }
+
   form label {
     display: inline-block;
     font-size: var(--fs-300);
@@ -121,7 +125,7 @@
     -webkit-tap-highlight-color: transparent;
   }
 
-  ::-webkit-clear-button{
+  ::-webkit-clear-button {
     display: none;
   }
 
@@ -130,16 +134,18 @@
     padding-inline: 0.5rem;
   }
 
-  ::-webkit-datetime-edit-day-field:focus-within,::-webkit-datetime-edit-month-field:focus-within,::-webkit-datetime-edit-year-field:focus-within{
+  ::-webkit-datetime-edit-day-field:focus-within,
+  ::-webkit-datetime-edit-month-field:focus-within,
+  ::-webkit-datetime-edit-year-field:focus-within {
     color: hsl(var(--clr-menu));
     background-color: hsl(var(--clr-white));
   }
 
-  ::-webkit-datetime-edit-year-field{
+  ::-webkit-datetime-edit-year-field {
     color: hsl(var(--clr-white));
   }
 
-  ::-webkit-calendar-picker-indicator:hover:invalid{
+  ::-webkit-calendar-picker-indicator:hover:invalid {
     cursor: not-allowed;
   }
 
@@ -243,9 +249,11 @@
     background-color: hsl(var(--smoky-black-3));
   }
 
-  :is(.select-container, .time-dropdown-container) .list .option.selected:hover{
+  :is(.select-container, .time-dropdown-container)
+    .list
+    .option.selected:hover {
     background-color: hsl(var(--clr-dark));
-  } 
+  }
 
   .error {
     font-size: 0.75rem;
@@ -277,6 +285,68 @@
     border: 1px solid #face8d;
     border-radius: 10px;
     color: #face8d;
+  }
+
+  .form-message.form-message-failure {
+    border: 1px solid hsl(var(--clr-error));
+    color: hsl(var(--clr-error));
+  }
+
+  .confirmation-modal-container{
+    display: none;
+    position: fixed;
+    inset: 0;
+    justify-content: center;
+    background-color: hsl(var(--clr-dark) / 0.85);
+    z-index: 8;
+  }
+
+  .confirmation-modal-content{
+    background-color: hsl(var(--clr-dark));
+    margin: 2rem;
+    padding: 1rem;
+    gap: 1rem;
+    border: 1px solid hsl(var(--clr-dark));
+  }
+
+  .confirmation-modal-content-header{
+    justify-content: space-between;
+    padding-block-end: 0.5rem;
+    border-bottom: 1px solid hsl(var(--clr-muted) / 0.5);
+  }
+
+  .confirmation-modal-content-header #confirmation-modal-close:hover{
+    cursor: pointer;
+  }
+
+  .confirmation-modal-content > h2 {
+    align-self: flex-start;
+    line-height: 1;
+  }
+
+  .confirmation-modal-content > .cr{
+    align-self: flex-start;
+    background-color: hsl(var(--clr-primary));
+    padding: 1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  .confirmation-modal-content > .cr:hover{
+  background-color: hsl(var(--clr-primary) / 0.9);
+  }
+
+  .confirmation-modal {
+    align-items: flex-start;
+    flex-flow: row wrap;
+    gap: 1rem;
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .confirmation-modal > div{
+    align-items: flex-start;
+    gap: 0.5rem;
   }
 
   /* End of Page Right */

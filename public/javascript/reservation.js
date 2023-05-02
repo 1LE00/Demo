@@ -90,7 +90,7 @@ let currentMinute = date.getMinutes();
 let counterForHour = true;
 
 function setCurrentTime() {
-  if (date.getHours() >= 0 && date.getHours() < 21) {
+  if (date.getHours() >= 8 && date.getHours() < 21) {
     if (date.getMinutes() >= 30) {
       if (counterForHour) {
         currentHour++;
@@ -148,6 +148,9 @@ function setCurrentDate() {
 
     if (d.getMonth() + 1 >= 1 && d.getMonth() + 1 <= 9)
       maxMonth = `0${(d.getMonth() + 1).toString()}`;
+    else {
+      maxMonth = (d.getMonth() + 1).toString();
+    }
 
     /* Generate next day date */
     let getNextDate = new Date(
@@ -160,6 +163,9 @@ function setCurrentDate() {
 
     if (d.getDate() >= 1 && d.getDate() <= 9)
       getMaxDate = `0${d.getDate().toString()}`;
+    else {
+      getMaxDate = d.getDate().toString();
+    }
 
     /* // Set the date for the next day if the time exceeds the restaurant serving hours// */
     if (
@@ -177,6 +183,7 @@ function setCurrentDate() {
   }
 }
 
+//display complete timeoptions when the user selects date other than today
 if (formDate !== null) {
   formDate.addEventListener("input", (event) => {
     let min = formDate.min;
@@ -209,7 +216,7 @@ if (formDate !== null) {
       vDate = minDate;
     }
 
-    const adjustTimeOptions = ()=>{
+    const adjustTimeOptions = () => {
       if (
         (vMonth === minMonth && vDate > currentDate) ||
         (vMonth === maxMonth && vDate <= currentDate)
@@ -233,7 +240,7 @@ if (formDate !== null) {
     vMonth = addZeroToMonthOrDay(vMonth);
     vDate = addZeroToMonthOrDay(vDate);
     formDate.value = `${vYear}-${vMonth}-${vDate}`;
-   
+
   });
 }
 
@@ -250,10 +257,55 @@ if (form != null) {
   });
 }
 
+/* Confirmation Modal */
+const modalInitiator = document.getElementById("modal-initiator");
+const modalContainer = document.querySelector(".confirmation-modal-container");
+const modalClose = document.getElementById("confirmation-modal-close");
+const bookingDiner = document.querySelector(".booking-diner");
+const bookingTime = document.querySelector(".booking-time");
+const bookingDate = document.querySelector(".booking-date");
+const completeReservation = document.querySelector(".cr");
+/* Confirmation Modal */
+if (modalInitiator != null) {
+  modalInitiator.addEventListener("click", () => {
+    modalContainer.style.display = "flex";
+    document.body.classList.add("nav-active");
+    const cd = new Date(formDate.value);
+    const options = {
+      month: "long",
+      day: "numeric",
+      weekday: "long"
+    }
+    bookingDate.innerHTML = cd.toLocaleString("en-us", options);
+    bookingDiner.innerHTML = numberOfGuests.innerHTML.trim();
+    bookingTime.innerHTML = currentTime.innerHTML;
+  });
+}
+
+if (modalClose != null) {
+  modalClose.addEventListener("click", () => {
+    modalContainer.style.display = "none";
+    document.body.classList.remove("nav-active");
+  });
+}
+
+/* Confirmation Modal */
+
 window.addEventListener("load", () => {
   setCurrentDate();
   setCurrentTime();
 });
+
+
+window.onclick = (event) => {
+  if (event.target == modalContainer) {
+    modalContainer.style.display = "none";
+    document.body.classList.remove("nav-active");
+  }
+};
+
+window.isConfirmationPage = false;
+
 
 /* Form scripts */
 

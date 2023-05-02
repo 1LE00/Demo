@@ -14,12 +14,6 @@ const tableSchema = new Schema({
   shape:{
     type: String
   },
-  isCircular:{
-    type: Boolean
-  },
-  isFamilyStyle:{
-    type: Boolean
-  },
   isGroupable:{
     type: Boolean
   }
@@ -28,4 +22,4 @@ const tableSchema = new Schema({
 
 const Table = mongoose.model("Table", tableSchema);
 
-module.exports = Table;
+module.exports = {Table, tableSchema};

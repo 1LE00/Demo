@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const Table = require("./Tables");
 
 const bookingSchema = new Schema({
   name:{
@@ -12,7 +13,7 @@ const bookingSchema = new Schema({
     type: Number
   },
   numberOfGuest: {
-    type: String
+    type: Number
   },
   date: {
     type: String
@@ -23,6 +24,10 @@ const bookingSchema = new Schema({
   request: {
     type: String
   },
+  assignedTable:{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Table"
+  }
 });
 
 const Booking = mongoose.model("Booking", bookingSchema);
