@@ -7,15 +7,6 @@ const tableSchema = new Schema({
   },
   seatingCapacity:{
     type: Number
-  },
-  status:{
-    type: String
-  },
-  shape:{
-    type: String
-  },
-  isGroupable:{
-    type: Boolean
   }
 });
 

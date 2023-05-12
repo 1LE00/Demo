@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const Table = require("./Tables");
+const {Table} = require("./Tables");
 
 const bookingSchema = new Schema({
   name:{

@@ -25,7 +25,6 @@
               </p>
             </div>
             <section class="form-container">
-              <% if (!status) { %>
                 <form action="/reservation" method="post" class="reservation-form" name="reservation-form"
                   id="reservation-form" autocomplete="off">
                   <div class="guest-container">
@@ -160,47 +159,73 @@
                       Table</button>
                   </div>
 
-                  <div class="confirmation-modal-container flex flex-column">
-                    <div class="confirmation-modal-content flex flex-column">
-                      <div class="confirmation-modal-content-header flex w-100">
+                  <div class="modal-container flex flex-column">
+                    <div class="modal-content flex flex-column">
+                      <div class="modal-content-header flex w-100">
                         <img class="logo" src="/images/logo.svg" alt="logo">
-                        <img src="/images/icon-close.svg" alt="close" id="confirmation-modal-close">
+                        <img src="/images/icon-close.svg" alt="close" id="modal-close">
                       </div>
-                      <h2>Confirm your Booking</h2>
-                      <p>This message is to confirm your reservation. The details of your booking
-                        are as follows:</p>
-                      <div class="confirmation-modal flex">
-                        <div class="diner-confirmation flex">
-                          <img class="inline" src="/images/login/user-regular.svg" alt="Diner" width="20px"
-                            height="16px">
-                          <span class="booking-diner">4 people</span>
-                        </div>
+                      <div class="confirmation-modal-content flex flex-column">
+                        <h2>Confirm your Booking</h2>
+                        <p>This message is to confirm your reservation. The details of your booking
+                          are as follows:</p>
+                        <div class="booking-confirmation flex">
+                          <div class="diner-confirmation flex">
+                            <img class="inline" src="/images/login/user-regular.svg" alt="Diner" width="20px"
+                              height="16px">
+                            <span class="booking-diner"></span>
+                          </div>
 
-                        <div class="time-confirmation flex">
-                          <img class="inline" src="/images/clock-regular.svg" alt="Time" width="20px" height="16px">
-                          <span class="booking-time">8:00 PM</span>
-                        </div>
+                          <div class="time-confirmation flex">
+                            <img class="inline" src="/images/clock-regular.svg" alt="Time" width="20px" height="16px">
+                            <span class="booking-time"></span>
+                          </div>
 
-                        <div class="date-confirmation flex">
-                          <img class="inline" src="/images/calendar-regular.svg" alt="Date" width="20px" height="16px">
-                          <span class="booking-date">Thursday, April 27</span>
+                          <div class="date-confirmation flex">
+                            <img class="inline" src="/images/calendar-regular.svg" alt="Date" width="20px"
+                              height="16px">
+                            <span class="booking-date"></span>
+                          </div>
+                        </div>
+                        <button class="uppercase cr" type="submit">Complete Reservation</button>
+                      </div>
+                      <div class="booking booking-success flex flex-column" id="booking-success">
+                        <h2>Booking Confirmed</h2>
+                        <p>A Booking for <span class="diner-value"></span> is made for <span class="diner-date"></span>
+                          at <span class="diner-time"></span>.</p>
+                        <h3>Would you like to pre-order food for your reservation?</h3>
+                        <div class="btn-grp">
+                          <button type="button" class="uppercase order-ok">Ok</button>
+                          <button type="button" class="uppercase order-cancel">Cancel</button>
                         </div>
                       </div>
-                      <button class="uppercase cr" type="submit">Complete Reservation</button>
+                      <div class="booking booking-failure flex flex-column" id="booking-failure">
+                        <h2>Booking Failed</h2>
+                        <p>Oops! No tables available at the moment! Try Booking at a different time-slot or click <span>YES</span> to
+                          be included in waitlist for current time-slot.</p>
+                        <h3>Would you like to be listed on the waitlist?</h3>
+                        <div class="btn-grp">
+                          <button type="button" class="uppercase waitlist-ok">Yes</button>
+                          <button type="button" class="uppercase waitlist-cancel">No</button>
+                        </div>
+                      </div>
+                      <div class="waitlist flex flex-column" id="waitlist">
+                        <h2>Waitlist Added</h2>
+                        <p>You have been added to the waitlist. We will notify you through call or email when your table is ready.</p>
+                        <div class="btn-grp">
+                          <button type="button" class="waitlist-finish">Ok</button>
+                        </div>
+                      </div>
+                      <div class="waitlist flex flex-column" id="waitlist-exists">
+                        <h2>Waitlist Exists!!!</h2>
+                        <p>You have already been added to the waitlist for the booking of <span class="waitlist-exists-diner"></span> on <span class="waitlist-exists-date"></span> at <span class="waitlist-exists-time"></span>. We will notify you through call or email when your table is ready.</p>
+                        <div class="btn-grp">
+                          <button type="button" class="we-finish">I Understand</button>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </form>
-                <% } else { %>
-                  <% if (cr) { %>
-                    <div class="form-message form-message-success">
-                      <div>Thank you! Your submission has been received!</div>
-                    </div>
-                    <% } else { %>
-                      <div class="form-message form-message-failure">
-                        <div>Oops! No tables available at the moment! Try Booking at a different time-slot</div>
-                      </div>
-                      <% } %>
-                        <% } %>
             </section>
           </section>
         </main>

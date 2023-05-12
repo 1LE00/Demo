@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../model/Users");
-const path = require("path");
 const contactController = require("../controllers/contactController");
 const bookingController = require("../controllers/bookingController");
+const waitlistsController = require("../controllers/waitlistsController");
 
 router.get("^/$|(index|home)(.html)?", async (req, res) => {
   if (req.isAuthenticated()) {
@@ -60,4 +60,5 @@ router
   .get(bookingController.renderReservation)
   .post(bookingController.handleBooking);
 
+router.route("/waitlist").post(waitlistsController.handleWaitlist);
 module.exports = router;

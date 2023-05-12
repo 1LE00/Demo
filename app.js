@@ -3,6 +3,8 @@ const express = require("express");
 const path = require("path");
 const root = require("./routes/root.js");
 const auth = require("./routes/auth.js");
+const user = require("./routes/user.js");
+const reserva = require("./routes/reserva.js");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const passport = require("passport");
@@ -40,6 +42,8 @@ app.use(cookieParser());
 /* Routes */
 app.use("/", root);
 app.use("/", auth);
+app.use('/', user);
+app.use('/reserva', reserva);
 
 /* Handle 404 */
 app.all("*", (req, res) => {

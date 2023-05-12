@@ -76,8 +76,6 @@ if (selectContainer != null && timeContainer != null) {
     timeList.classList.remove("open");
     timeIcon.classList.remove("rotate");
   });
-} else {
-  document.querySelector(".form-message-success").scrollIntoView();
 }
 
 const date = new Date();
@@ -99,6 +97,8 @@ function setCurrentTime() {
     } else {
       currentMinute = "30";
     }
+  } else if (date.getHours() == 21 && date.getMinutes() < 30) {
+    currentMinute = "30";
   } else {
     currentHour = "8";
     currentMinute = "00";
@@ -185,7 +185,7 @@ function setCurrentDate() {
 
 //display complete timeoptions when the user selects date other than today
 if (formDate !== null) {
-  formDate.addEventListener("input", (event) => {
+  formDate.addEventListener("input", () => {
     let min = formDate.min;
     let minYear = parseInt(min.slice(0, 4));
     let minMonth = parseInt(min.slice(5, 7));
@@ -244,28 +244,43 @@ if (formDate !== null) {
   });
 }
 
-const form = document.getElementById("reservation-form");
-
-if (form != null) {
-  form.addEventListener("submit", (event) => {
-    const selectOptions = [...select.options];
-    selectOptions.forEach((selectOption) => {
-      if (selectOption.innerHTML == numberOfGuests.innerHTML.trim()) {
-        select.value = selectOption.getAttribute("value");
-      }
-    });
-  });
-}
-
+/* Modal Containers*/
+const modalContainer = document.querySelector(".modal-container");
 /* Confirmation Modal */
 const modalInitiator = document.getElementById("modal-initiator");
-const modalContainer = document.querySelector(".confirmation-modal-container");
-const modalClose = document.getElementById("confirmation-modal-close");
+const modalClose = document.getElementById("modal-close");
+const confirmationModal = document.querySelector(".confirmation-modal-content");
 const bookingDiner = document.querySelector(".booking-diner");
 const bookingTime = document.querySelector(".booking-time");
 const bookingDate = document.querySelector(".booking-date");
 const completeReservation = document.querySelector(".cr");
 /* Confirmation Modal */
+
+/* booking-success modal */
+const bookingSuccess = document.getElementById("booking-success");
+const dinerDate = document.querySelector(".diner-date");
+const dinerTime = document.querySelector(".diner-time");
+const dinerValue = document.querySelector(".diner-value");
+const orderOk = document.querySelector(".order-ok");
+const orderCancel = document.querySelector(".order-cancel");
+/* booking-success modal */
+
+/* booking-failure modal */
+const bookingFailure = document.getElementById("booking-failure");
+const waitlistOk = document.querySelector(".waitlist-ok");
+const waitlistCancel = document.querySelector(".waitlist-cancel");
+/* booking-failure modal */
+
+/* waitlist modal */
+const waitlist = document.getElementById("waitlist");
+const waitlistFinsish = document.querySelector(".waitlist-finish");
+const waitlistExists = document.getElementById("waitlist-exists");
+const wEFinsish = document.querySelector(".we-finish");
+const wEDiner = document.querySelector(".waitlist-exists-diner");
+const wEDate = document.querySelector(".waitlist-exists-date");
+const wETime = document.querySelector(".waitlist-exists-time");
+/* waitlist modal */
+
 if (modalInitiator != null) {
   modalInitiator.addEventListener("click", () => {
     modalContainer.style.display = "flex";
@@ -279,9 +294,17 @@ if (modalInitiator != null) {
     bookingDate.innerHTML = cd.toLocaleString("en-us", options);
     bookingDiner.innerHTML = numberOfGuests.innerHTML.trim();
     bookingTime.innerHTML = currentTime.innerHTML;
+    confirmationModal.classList.remove("gone");
+    bookingSuccess.classList.remove("show");
+    bookingFailure.classList.remove("show");
+    bookingFailure.classList.remove("gone");
+    waitlist.classList.remove("show");
+    waitlistExists.classList.remove("show");
+
   });
 }
 
+// TODO refactor the following three
 if (modalClose != null) {
   modalClose.addEventListener("click", () => {
     modalContainer.style.display = "none";
@@ -289,7 +312,99 @@ if (modalClose != null) {
   });
 }
 
-/* Confirmation Modal */
+orderCancel.addEventListener("click", () => {
+  modalContainer.style.display = "none";
+  document.body.classList.remove("nav-active");
+})
+
+waitlistCancel.addEventListener("click", () => {
+  modalContainer.style.display = "none";
+  document.body.classList.remove("nav-active");
+})
+
+waitlistOk.addEventListener("click", (event) => {
+  let xhttp = new XMLHttpRequest();
+  const formData = new FormData(form);
+  const encodedData = new URLSearchParams(formData).toString();
+  xhttp.open("POST", "/waitlist", true);
+  xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  xhttp.send(encodedData);
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      const responseText = JSON.parse(this.responseText);
+      console.log(responseText);
+      if (responseText.redirect) {
+        window.location.href = responseText.redirect;
+      } else {
+        if (responseText.waitlist) {
+          bookingFailure.classList.add("gone");
+          waitlist.classList.add("show");
+        } else {
+          wEDate.innerHTML= bookingDate.innerHTML;
+          wETime.innerHTML= bookingTime.innerHTML;
+          wEDiner.innerHTML = bookingDiner.innerHTML;
+          bookingFailure.classList.add("gone");
+          waitlistExists.classList.add("show");
+        }
+      }
+    }
+  };
+});
+
+waitlistFinsish.addEventListener("click", (event) => {
+  modalContainer.style.display = "none";
+  document.body.classList.remove("nav-active");
+  window.location.href = "http://localhost:3000/user";
+});
+
+
+wEFinsish.addEventListener("click", (event) => {
+  modalContainer.style.display = "none";
+  document.body.classList.remove("nav-active");
+});
+/* Modal Containers */
+
+
+const form = document.getElementById("reservation-form");
+
+if (form != null) {
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const selectOptions = [...select.options];
+    selectOptions.forEach((selectOption) => {
+      if (selectOption.innerHTML == numberOfGuests.innerHTML.trim()) {
+        select.value = selectOption.getAttribute("value");
+      }
+    });
+    // *AJAX
+    let xhttp = new XMLHttpRequest();
+    const formData = new FormData(form);
+    const encodedData = new URLSearchParams(formData).toString();
+    xhttp.open("POST", "/reservation", true);
+    xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        const responseText = JSON.parse(this.responseText);
+        console.log(responseText);
+        if (responseText.redirect) {
+          window.location.href = responseText.redirect;
+        } else {
+          if (responseText.booked) {
+            confirmationModal.classList.add("gone");
+            bookingSuccess.classList.add("show");
+            dinerDate.innerHTML = bookingDate.innerHTML;
+            dinerTime.innerHTML = bookingTime.innerHTML;
+            dinerValue.innerHTML = bookingDiner.innerHTML;
+          } else {
+            confirmationModal.classList.add("gone");
+            bookingFailure.classList.add("show");
+          }
+        }
+      }
+    };
+    xhttp.send(encodedData);
+  });
+}
 
 window.addEventListener("load", () => {
   setCurrentDate();
@@ -299,25 +414,19 @@ window.addEventListener("load", () => {
 
 window.onclick = (event) => {
   if (event.target == modalContainer) {
-    modalContainer.style.display = "none";
-    document.body.classList.remove("nav-active");
+    if (!bookingSuccess.classList.contains("show") && !bookingFailure.classList.contains("show")) {
+      modalContainer.style.display = "none";
+      document.body.classList.remove("nav-active");
+    }
   }
 };
-
-window.isConfirmationPage = false;
-
 
 /* Form scripts */
 
 /* 
-    * Finish it asap
-    TODO:  change the date field
-    ? MIght need to move header to the bottom as well 
-    ! DON'T FORGET TO MAKE THE FIELDS LOOK GOOD
- */
-/* 
     ! DON NOT FORGET
     TODO CHECK DATATYPE OF TIME OPTIONS AND SELECT OPTIONS, AND SEE IF IT'S REALLY NECESSARY FOR IT TO BE CONVERTED INTO AN ARRAY
+    TODO Have a look at the set date function at 9:30 tomorrow
     ? THERE'S DATEPICKER FROM JQUERY IF YOU WANT TO USE IT
     
 */

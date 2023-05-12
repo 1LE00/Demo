@@ -63,6 +63,8 @@ const handleSignIn = async (req, res, next) => {
           return res.redirect(`${req.cookies.previousUrl}`);
         } else if(req.cookies.bookingValidate) {
           return res.redirect(`${req.cookies.previousUrl}`);
+        } else if(req.cookies.userRedirect) {
+          return res.redirect(`${req.cookies.previousUrl}`);
         } else{
           return res.redirect("/");
         }

@@ -21,7 +21,11 @@
                                     <img src="/images/login/icon-email.svg" width="20px" height="16px" alt="">
                                 </span>
                                 <input type="text" name="username" id="login-email" placeholder="Email"
-                                    value="<%= loginUsername %>">
+                                    <% if (loginUsername == '') { %>
+                                        value="<%= 'a@b.com' %>">
+                                        <% } else { %>
+                                            value="<%= loginUsername %>">
+                                            <% } %>
                             </div>
                             <span class="error flex login-email-error">
                                 <img src="/images/circle-exclamation-solid.svg" alt="">
@@ -35,7 +39,11 @@
                                     <img src="/images/login/key-solid.svg" width="20px" height="16px" alt="">
                                 </span>
                                 <input type="password" name="password" id="login-password" placeholder="Password"
-                                    value="<%= loginPassword %>" maxlength="20" data-password>
+                                <% if (loginPassword == '') { %>
+                                    value="<%= '123456' %>"
+                                    <% } else { %>
+                                        value="<%= loginPassword %>"
+                                        <% } %> maxlength="20" data-password>
                                 <span class="eye-holder"></span>
                             </div>
                             <span class="error login-password-error none flex">
