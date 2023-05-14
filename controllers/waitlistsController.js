@@ -1,5 +1,6 @@
 const User = require("../model/Users");
 const Waitlist = require("../model/Waitlist");
+const Counter = require("../model/Counters");
 
 const handleWaitlist = async (req, res) => {
     const { guests, date, time, request } = req.body;
@@ -12,7 +13,16 @@ const handleWaitlist = async (req, res) => {
                 console.log(duplicate);
                 return res.send({ waitlistExists: true });
             } else {
+                async function getNextSequenceValue(sequenceName) {
+                    const counter = await Counter.findByIdAndUpdate(
+                        sequenceName,
+                        { $inc: { count: 1 } },
+                        { new: true, upsert: true }
+                    );
+                    return counter.count;
+                }
                 await Waitlist.create({
+                    id: await getNextSequenceValue('Waitlist Counters'),
                     name: user.name,
                     email: user.username,
                     contact: user.contact,
@@ -20,7 +30,7 @@ const handleWaitlist = async (req, res) => {
                     date: date,
                     time: time,
                     request: request,
-                    createdAt: new Date()
+                    createdAt: Date.now()
                 });
                 console.log("<---Waitlist Message--->");
                 console.log(`User ${user.name} has been added to the waitlist for the booking of ${guests} guests on ${date} at ${time}.`);

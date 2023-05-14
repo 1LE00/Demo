@@ -214,6 +214,28 @@ footer a:hover {
   color: hsl(var(--clr-primary));
 }
 
+.modal-container {
+  display: none;
+  position: fixed;
+  inset: 0;
+  justify-content: center;
+  background-color: hsl(var(--clr-dark) / 0.85);
+  z-index: 8;
+}
+
+.modal-content {
+  position: relative;
+  background-color: hsl(var(--clr-dark));
+  max-width: 560px;
+  margin: 2rem;
+  padding: 1rem;
+  gap: 1rem;
+  align-items: flex-start;
+  border: 2px solid hsl(var(--eerie-black-1));
+  box-shadow: 7px 7px 15px hsl(var(--eerie-black-1) / 0.75);
+  overflow: hidden;
+}
+
 ::-webkit-scrollbar {
   width: 0;
 }

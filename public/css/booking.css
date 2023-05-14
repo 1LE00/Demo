@@ -255,6 +255,7 @@
     background-color: hsl(var(--clr-dark));
   }
 
+  /* USed in contact  */
   .error {
     font-size: 0.75rem;
     margin-block-start: 0.5rem;
@@ -267,6 +268,8 @@
     width: 1rem;
   }
 
+  /* USed in contact  */
+
   .btn button {
     font-size: var(--fs-300);
     font-weight: 600;
@@ -278,7 +281,7 @@
     box-shadow: 0px 3px 0px hsl(var(--clr-primary), 0.5);
   }
 
-  :is(.btn button, .confirmation-modal-content > .cr):active{
+  :is(.btn button, .confirmation-modal-content > .cr):active {
     transform: translateY(3px);
     box-shadow: 0px 0px 0px hsl(var(--clr-dark));
     -webkit-tap-highlight-color: transparent;
@@ -296,28 +299,6 @@
   .form-message.form-message-failure {
     border: 1px solid hsl(var(--clr-error));
     color: hsl(var(--clr-error));
-  }
-
-  .modal-container {
-    display: none;
-    position: fixed;
-    inset: 0;
-    justify-content: center;
-    background-color: hsl(var(--clr-dark) / 0.85);
-    z-index: 8;
-  }
-
-  .modal-content {
-    position: relative;
-    background-color: hsl(var(--clr-dark));
-    max-width: 560px;
-    margin: 2rem;
-    padding: 1rem;
-    gap: 1rem;
-    align-items: flex-start;
-    border: 2px solid hsl(var(--eerie-black-1));
-    box-shadow: 7px 7px 15px hsl(var(--eerie-black-1) / 0.75);
-    overflow: hidden;
   }
 
   .modal-content > div:not(:first-child) {
@@ -370,13 +351,13 @@
     background-color: hsl(var(--clr-primary) / 0.9);
   }
 
-  :is(.booking,.waitlist) {
+  :is(.booking, .waitlist) {
     z-index: -1;
     opacity: 0;
     transform: translateX(100%);
   }
 
-  .booking > p{
+  .booking > p {
     padding-block-end: 0.8rem;
     border-bottom: 1px solid hsl(var(--clr-muted) / 0.5);
   }
@@ -385,16 +366,16 @@
     color: hsl(var(--clr-primary));
   }
 
-  .booking-success > p > a:is(:active, :hover){
+  .booking-success > p > a:is(:active, :hover) {
     text-decoration: underline;
   }
 
-  .booking > h3{
+  .booking > h3 {
     color: hsl(var(--clr-white));
     font-size: var(--fs-300);
   }
 
-  :is(.booking,.waitlist).show {
+  :is(.booking, .waitlist).show {
     position: relative !important;
     z-index: 1;
     opacity: 1;
@@ -409,7 +390,7 @@
     position: absolute !important;
   }
 
-  :is(.booking-failure, #waitlist-exists) > h2{
+  :is(.booking-failure, #waitlist-exists) > h2 {
     color: hsl(var(--clr-error));
     font-weight: 600;
   }
@@ -426,19 +407,19 @@
     box-shadow: 0px 3px 0px hsl(var(--clr-primary), 0.5);
   }
 
-  .btn-grp button:first-child:hover{
+  .btn-grp button:first-child:hover {
     background-color: transparent;
     color: hsl(var(--clr-primary));
     transition: 500ms ease-in-out;
   }
 
-  .btn-grp button:last-child{
+  .btn-grp button:last-child {
     background-color: transparent;
     border: 1px solid hsl(var(--clr-primary));
     color: hsl(var(--clr-primary));
   }
 
-  .btn-grp button:hover:last-child{
+  .btn-grp button:hover:last-child {
     background-color: hsl(var(--clr-primary));
     color: hsl(var(--clr-dark));
     transition: 500ms ease-in-out;

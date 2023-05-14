@@ -315,6 +315,7 @@ if (modalClose != null) {
 orderCancel.addEventListener("click", () => {
   modalContainer.style.display = "none";
   document.body.classList.remove("nav-active");
+  window.location.href = "http://localhost:3000/user/booking_details";
 })
 
 waitlistCancel.addEventListener("click", () => {
@@ -354,13 +355,14 @@ waitlistOk.addEventListener("click", (event) => {
 waitlistFinsish.addEventListener("click", (event) => {
   modalContainer.style.display = "none";
   document.body.classList.remove("nav-active");
-  window.location.href = "http://localhost:3000/user";
+  window.location.href = "http://localhost:3000/user/waitlist";
 });
 
 
 wEFinsish.addEventListener("click", (event) => {
   modalContainer.style.display = "none";
   document.body.classList.remove("nav-active");
+  window.location.href = "http://localhost:3000/user/waitlist";
 });
 /* Modal Containers */
 

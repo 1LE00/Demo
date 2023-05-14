@@ -1,5 +1,6 @@
 const User = require("../model/Users");
 const Booking = require("../model/Bookings");
+const Counter = require("../model/Counters");
 const { Table } = require("../model/Tables");
 
 const renderReservation = async (req, res) => {
@@ -9,7 +10,6 @@ const renderReservation = async (req, res) => {
     const selectedDate = req.cookies.date;
     const selectedTime = req.cookies.time;
     const clientRequest = req.cookies.request;
-    const booked = parseInt(req.cookies.booked);
     res.clearCookie("numberOfGuest");
     res.clearCookie("date");
     res.clearCookie("time");
@@ -54,10 +54,20 @@ const handleBooking = async (req, res) => {
       //   console.log("No free tables available at this hour");
       // }
 
+      async function getNextSequenceValue(sequenceName) {
+        const counter = await Counter.findByIdAndUpdate(
+          sequenceName,
+          { $inc: { count: 1 } },
+          { new: true, upsert: true }
+        );
+        return counter.count;
+      }
+
       async function createBooking(tableBooked) {
         try {
           const user = await User.findOne({ username: req.user.username }).exec();
           await Booking.create({
+            id: await getNextSequenceValue('Booking Counters'),
             name: user.name,
             email: user.username,
             contact: user.contact,
@@ -65,6 +75,7 @@ const handleBooking = async (req, res) => {
             date: date,
             time: time,
             request: request,
+            createdAt: Date.now(),
             assignedTable: tableBooked._id
           });
           console.log("Table number " + tableBooked.tableNumber + " is booked for " + req.user.name + " at " + time + " on " + date + " for " + guests + " guests.");

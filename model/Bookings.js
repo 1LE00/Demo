@@ -1,15 +1,20 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const {Table} = require("./Tables");
+const { Table } = require("./Tables");
 
 const bookingSchema = new Schema({
-  name:{
+  id: {
+    type: Number,
+    required: true,
+    unique: true
+  },
+  name: {
     type: String
   },
-  email:{
+  email: {
     type: String
   },
-  contact:{
+  contact: {
     type: Number
   },
   numberOfGuest: {
@@ -24,9 +29,15 @@ const bookingSchema = new Schema({
   request: {
     type: String
   },
-  assignedTable:{
+  assignedTable: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Table"
+  },
+  createdAt: {
+    type: Date
+  },
+  updatedAt: {
+    type: Date
   }
 });
 

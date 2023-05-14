@@ -15,7 +15,6 @@ const handleRegister = async (req, res) => {
         message: `User with email "${username}" already exists!`,
         registerName: fullname,
         registerEmail: username,
-        condition: false,
       });
     } else {
       User.register(

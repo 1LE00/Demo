@@ -23,41 +23,7 @@
     background: rgba(5, 0, 0, 0.25);
     box-shadow: 15px 15px 7px rgba(0, 0, 0, 0.8);
   }
-
-  .modal-container{
-    position: absolute;
-    inset: 0;
-    background-color: rgba(5, 0, 0, 0.5);
-    justify-content: center;
-    padding-inline: 2rem;
-  }
-
-  .modal-container .modal{
-    padding: 4rem 2rem;
-    background-color: rgba(5, 0, 0);
-  }
-
-  .modal-container h2{
-    font-size: 1.5rem;
-    margin-block-end: 1rem;
-  }
-
-  .modal-container > div > :not(:first-child){
-    font-size: 1rem;
-    margin-block-end: 1.5rem;
-  }
-
-  .modal-container a{
-    max-width: 300px;
-    background-color: hsl(var(--clr-primary));
-    color: hsl(var(--clr-dark));
-    padding: 0.75rem 0.5rem;
-    font-weight: 500;
-    margin-inline: auto;
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
-    transition:  all 0.5s ease;
-  }
-
+  
   .register-container {
     padding-block: 4rem;
   }

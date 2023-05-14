@@ -42,7 +42,7 @@ app.use(cookieParser());
 /* Routes */
 app.use("/", root);
 app.use("/", auth);
-app.use('/', user);
+app.use('/user', user);
 app.use('/reserva', reserva);
 
 /* Handle 404 */

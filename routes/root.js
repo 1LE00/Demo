@@ -5,7 +5,7 @@ const contactController = require("../controllers/contactController");
 const bookingController = require("../controllers/bookingController");
 const waitlistsController = require("../controllers/waitlistsController");
 
-router.get("^/$|(index|home)(.html)?", async (req, res) => {
+router.get("^/($|(index|home)(.html)?)", async (req, res) => {
   if (req.isAuthenticated()) {
     const user = await User.findOne({ username: req.user.username });
     res.render("index", {
