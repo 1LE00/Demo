@@ -6,24 +6,21 @@ const waitlist = document.getElementById("waitlist");
 const review = document.getElementById("review");
 
 const checkUrl = () => {
-    if (window.location.pathname == "/user/booking_details") {
+    if (window.location.pathname == "/user" || window.location.pathname == "/user/home" || window.location.pathname == "/user/index") {
+        home.classList.add("active");
+    }else if (window.location.pathname == "/user/booking_details") {
         bookingDetails.classList.add("active");
-        home.classList.remove("active");
     } else if (window.location.href == "http://localhost:3000/user/booking_history") {
         bookingHistory.classList.add("active");
-        home.classList.remove("active");
     } else if (window.location.href == "http://localhost:3000/user/order_history") {
         orderHistory.classList.add("active");
         orderHistory.scrollIntoView();
-        home.classList.remove("active");
     } else if (window.location.href == "http://localhost:3000/user/waitlist") {
         waitlist.classList.add("active");
         waitlist.scrollIntoView();
-        home.classList.remove("active");
     } else if (window.location.href == "http://localhost:3000/user/review") {
         review.classList.add("active");
         review.scrollIntoView();
-        home.classList.remove("active");
     }
 }
 

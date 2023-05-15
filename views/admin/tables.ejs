@@ -1,0 +1,76 @@
+<%- include('./partials/header') %>
+    <link rel="stylesheet" href="/css/admin.css">
+    </head>
+
+    <body>
+        <div class="container flex w-100">
+            <div class="primary-navbar invisible">
+                <%- include('./partials/primary-nav') %>
+            </div>
+            <main class="w-100" id="index-main">
+                <%- include('./partials/nav') %>
+                    <div class="content">
+                        <div class="heading">
+                            <h1 class="uppercase text-center"
+                                style="font-weight:600; letter-spacing: 5px; line-height: 1.5">List Of Tables
+                            </h1>
+                        </div>
+
+                        <% if (tables.length> 0) { %>
+                            <div id="available-tables" class="flex flex-column available-tables">
+                                <div class="card-view-options flex">
+                                    <button class="launch-edit-modal">
+                                        <img src="/images/bars-solid.svg" alt="">
+                                    </button>
+                                    <button class="launch-delete-modal">
+                                        <img src="/images/table-solid.svg" alt="">
+                                    </button>
+                                </div>
+                                <% for( let i=0; i < tables.length; i++ ) { %>
+                                    <div class="card w-100">
+                                        <div class="card-content flex flex-column">
+                                            <span id="<%= tables[i]._id %>" data-id="<%= tables[i]._id %>">
+                                                <span class="key">Table ID:</span>
+                                                <span class="value" style="color: #5dade2">
+                                                    <%= tables[i]._id %>
+                                                </span>
+                                            </span>
+                                            <span>
+                                                <span class="key">Table Number:</span>
+                                                <span class="value" style="color:#f39c12">
+                                                    <%= tables[i].tableNumber %>
+                                                </span>
+                                            </span>
+                                            <span>
+                                                <span class="key">Seating Capacity:</span>
+                                                <span class="value" style="color:#27ae60">
+                                                    <%= tables[i].seatingCapacity %>
+                                                </span>
+                                            </span>
+                                        </div>
+                                        <div class="card-actions tables-card-actions flex">
+                                            <button class="launch-edit-modal" data-id-holder="<%= tables[i]._id %>">
+                                                <img src="/images/pen-to-square-regular.svg" alt="">
+                                            </button>
+                                            <button class="launch-delete-modal" data-id-holder="<%= tables[i]._id %>">
+                                                <img src="/images/trash-solid.svg" alt="">
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                            </div>
+                            <% } else { %>
+                                <h2 class="uppercase" style="font-weight:600; letter-spacing: 5px; line-height: 1.5">No
+                                    Tables created</h2>
+                                <div class="navigate">
+                                    <p>Go to <a href="/reserva/tables/add" style="color: hsl(var(--clr-primary))">Add
+                                            tables</a> to create tables.</p>
+                                </div>
+                                <% } %>
+                    </div>
+            </main>
+        </div>
+        <script src="/javascript/admin/index.js"></script>
+    </body>
+
+    </html>

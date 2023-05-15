@@ -41,12 +41,21 @@ router
   .post(usersController.handleRegister);
 
 router.post("/logout", function (req, res, next) {
-  req.logout(function (err) {
-    if (err) {
-      return next(err);
-    }
-    res.redirect("/login");
-  });
+  if(req.user.isAdmin){
+    req.logout(function (err) {
+      if (err) {
+        return next(err);
+      }
+      res.redirect("/reserva/auth/admin/verify");
+    });
+  }else{
+    req.logout(function (err) {
+      if (err) {
+        return next(err);
+      }
+      res.redirect("/login");
+    });
+  }
 });
 module.exports = router;
 

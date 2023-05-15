@@ -1,81 +1,25 @@
 const modalContainer = document.querySelector(".modal-container");
 const modalContent = document.querySelector(".modal-content");
-const actionConfirmationBox = document.querySelector(".action-confirmation-box");
-const actionResultBox = document.querySelector(".action-result-box");
-const modalHeading = document.querySelector(".modal-heading");
-const modalMessageAc = document.querySelector(".ac-modal-message");
-const modalMessageAr = document.querySelector(".ar-modal-message");
+const editModal = document.querySelector(".edit-launch");
+const deleteModal = document.querySelector(".delete-launch");
+const actionConfirmationBoxEd = document.querySelector(".ed-action-confirmation-box");
+const actionResultBoxEd = document.querySelector(".ed-action-result-box");
+const actionConfirmationBoxDel = document.querySelector(".del-action-confirmation-box");
+const actionResultBoxDel = document.querySelector(".del-action-result-box");
+const modalMessageAcEd = document.querySelector(".ed-ac-modal-message");
+const modalMessageArEd = document.querySelector(".ed-ar-modal-message");
+const modalMessageAcDel = document.querySelector(".del-ac-modal-message");
+const modalMessageArDel = document.querySelector(".del-ar-modal-message");
 const editBtn = document.querySelectorAll(".launch-edit-modal");
 const deleteBtn = document.querySelectorAll(".launch-delete-modal");
-const okAc = document.getElementById("ac-ok");
-const okAr = document.getElementById("ar-ok");
-const cancel = document.getElementById("ac-cancel");
+const okAcEd = document.getElementById("ed-ac-ok");
+const okArEd = document.getElementById("ed-ar-ok");
+const okAcDel = document.getElementById("del-ac-ok");
+const okArDel = document.getElementById("del-ar-ok");
+const cancel = document.querySelectorAll("[data-cancel]");
 const editform = document.getElementById("edit-reservation");
 const closeEdit = document.querySelectorAll("[data-close-edit]");
 
-closeEdit.forEach(close => {
-    close.addEventListener("click", () => {
-        editform.style.display = "none";
-        modalContainer.style.display = "none";
-        document.body.classList.remove('nav-active');
-    });
-});
-
-editBtn.forEach(btn => {
-    btn.addEventListener("click", (event) => {
-        let target = event.target;
-        let bookingID;
-        while (target.parentNode) {
-            if (target.dataset.idHolder) {
-                bookingID = target.dataset.idHolder
-                break;
-            }
-            target = target.parentNode;
-        }
-        setCurrentDate();
-        setCurrentTime();
-        modalContainer.style.display = "flex";
-        actionConfirmationBox.style.display = "flex";
-        actionResultBox.style.display = "flex";
-        document.body.classList.add('nav-active');
-        modalHeading.innerHTML = "Edit Reservation";
-        modalMessageAc.innerHTML = "Are you sure you want to edit your reservation ID: " + bookingID + " ?";
-        okAc.addEventListener("click", () => {
-            actionConfirmationBox.style.display = "none";
-            actionResultBox.style.display = "none";
-            editform.style.display = "flex";
-
-            // if (true) {
-            //     let xhttp = new XMLHttpRequest();
-            //     const formData = new FormData(form);
-            //     const encodedData = new URLSearchParams(formData).toString();
-            //     xhttp.open("POST", "/waitlist", true);
-            //     xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            //     xhttp.send(encodedData);
-            //     xhttp.onreadystatechange = function () {
-            //         if (this.readyState == 4 && this.status == 200) {
-            //             const responseText = JSON.parse(this.responseText);
-            //             console.log(responseText);
-            //             if (responseText.redirect) {
-            //                 window.location.href = responseText.redirect;
-            //             } else {
-            //                 if (responseText.waitlist) {
-            //                     bookingFailure.classList.add("gone");
-            //                     waitlist.classList.add("show");
-            //                 } else {
-            //                     wEDate.innerHTML = bookingDate.innerHTML;
-            //                     wETime.innerHTML = bookingTime.innerHTML;
-            //                     wEDiner.innerHTML = bookingDiner.innerHTML;
-            //                     bookingFailure.classList.add("gone");
-            //                     waitlistExists.classList.add("show");
-            //                 }
-            //             }
-            //         }
-            //     };
-            // }
-        });
-    });
-});
 
 /**
  * * Edit reservation-form 
@@ -200,7 +144,6 @@ function setCurrentDate() {
     let getMaxDate = "";
     if (formDate != null) {
         currentMonth = addZeroToMonthOrDay(currentMonth);
-
         /* Generate 1 month limit for date field */
         const d = new Date(
             currentYear,
@@ -213,7 +156,6 @@ function setCurrentDate() {
         else {
             maxMonth = (d.getMonth() + 1).toString();
         }
-
         /* Generate next day date */
         let getNextDate = new Date(
             currentYear,
@@ -228,7 +170,6 @@ function setCurrentDate() {
         else {
             getMaxDate = d.getDate().toString();
         }
-
         /* // Set the date for the next day if the time exceeds the restaurant serving hours// */
         if (
             (date.getHours() >= 21 && date.getMinutes() > 30) ||
@@ -302,11 +243,88 @@ if (formDate !== null) {
         vMonth = addZeroToMonthOrDay(vMonth);
         vDate = addZeroToMonthOrDay(vDate);
         formDate.value = `${vYear}-${vMonth}-${vDate}`;
-
     });
 }
 
 /*  */
+
+closeEdit.forEach(close => {
+    close.addEventListener("click", () => {
+        editform.style.display = "none";
+        modalContainer.style.display = "none";
+        document.body.classList.remove('nav-active');
+    });
+});
+
+editBtn.forEach(btn => {
+    btn.addEventListener("click", (event) => {
+        let target = event.target;
+        let bookingID;
+        while (target.parentNode) {
+            if (target.dataset.idHolder) {
+                bookingID = target.dataset.idHolder
+                break;
+            }
+            target = target.parentNode;
+        }
+        console.log(target);
+        editModal.style.display = "flex";
+        modalContainer.style.display = "flex";
+        actionConfirmationBoxEd.style.display = "flex";
+        document.body.classList.add('nav-active');
+        modalMessageAcEd.innerHTML = "Are you sure you want to edit your reservation ID: " + bookingID + " ?";
+        okAcEd.addEventListener("click", () => {
+            actionConfirmationBoxEd.style.display = "none";
+            editform.style.display = "flex";
+            modalContent.style.margin = "0";
+            //     let minYear = parseInt(min.slice(0, 4));
+            // let minMonth = parseInt(min.slice(5, 7));
+            // let minDate = parseInt(min.slice(8));
+            editform.addEventListener("submit", (event) => {
+                event.preventDefault();
+                let xhttp = new XMLHttpRequest();
+                const formData = new FormData(editform);
+                const encodedData = new URLSearchParams(formData).toString();
+                editform.setAttribute('action', `/user/bookings/${bookingID}`)
+                const url = editform.getAttribute('action');
+                xhttp.open("POST", url, true);
+                xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhttp.send(encodedData);
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        const pageUrl = window.location.href;
+                        const responseText = JSON.parse(this.responseText);
+                        if (responseText.redirect) {
+                            window.location.href = responseText.redirect;
+                        } else {
+                            console.log(responseText);
+                            actionResultBoxEd.classList.add("show");
+                            if (responseText.status) {
+                                editform.style.display = "none";
+                                modalMessageArEd.innerHTML = "Your reservation ID: " + responseText.updatedRecord + " has been updated.";
+                                okArEd.addEventListener("click", () => {
+                                    modalContainer.style.display = "none";
+                                    editModal.style.display = "none";
+                                    document.body.classList.remove("nav-active");
+                                    window.location.href = pageUrl;
+                                });
+                            } else {
+                                editform.style.display = "none";
+                                modalMessageArEd.innerHTML = responseText.message;
+                                okArEd.addEventListener("click", () => {
+                                    modalContainer.style.display = "none";
+                                    editModal.style.display = "none";
+                                    actionResultBoxEd.style.display = "none";
+                                    document.body.classList.remove("nav-active");
+                                });
+                            }
+                        }
+                    }
+                };
+            });
+        });
+    });
+});
 
 deleteBtn.forEach(btn => {
     btn.addEventListener("click", (event) => {
@@ -319,11 +337,13 @@ deleteBtn.forEach(btn => {
             }
             target = target.parentNode;
         }
+        deleteModal.style.display = "flex";
+        actionConfirmationBoxDel.style.display = "flex";
+        actionResultBoxDel.style.display = "flex";
         modalContainer.style.display = "flex";
         document.body.classList.add('nav-active');
-        modalHeading.innerHTML = "Cancel Reservation";
-        modalMessageAc.innerHTML = "Are you sure you want to cancel your reservation ID: " + bookingID + " ?";
-        okAc.addEventListener("click", () => {
+        modalMessageAcDel.innerHTML = "Are you sure you want to cancel your reservation ID: " + bookingID + " ?";
+        okAcDel.addEventListener("click", () => {
             let xhttp = new XMLHttpRequest();
             xhttp.open("DELETE", `bookings/${bookingID}`, true);
             xhttp.send();
@@ -335,22 +355,21 @@ deleteBtn.forEach(btn => {
                         window.location.href = responseText.redirect;
                     } else {
                         console.log(responseText);
-                        actionConfirmationBox.classList.add("gone");
-                        cancel.style.display = "none";
-                        actionResultBox.classList.add("show");
+                        actionConfirmationBoxDel.classList.add("gone");
+                        actionResultBoxDel.classList.add("show");
                         setTimeout(() => {
-                            actionConfirmationBox.style.display = "none";
+                            actionConfirmationBoxDel.style.display = "none";
                         }, 1000);
                         if (responseText.status) {
-                            modalMessageAr.innerHTML = "Your reservation ID: " + responseText.deletedId + " has been cancelled.";
-                            okAr.addEventListener("click", () => {
+                            modalMessageArDel.innerHTML = "Your reservation ID: " + responseText.deletedId + " has been cancelled.";
+                            okArDel.addEventListener("click", () => {
                                 modalContainer.style.display = "none";
                                 document.body.classList.remove("nav-active");
                                 window.location.href = pageUrl;
                             });
                         } else {
-                            modalMessageAr.innerHTML = responseText.message;
-                            okAr.addEventListener("click", () => {
+                            modalMessageArDel.innerHTML = responseText.message;
+                            okArDel.addEventListener("click", () => {
                                 modalContainer.style.display = "none";
                                 document.body.classList.remove("nav-active");
                             });
@@ -362,8 +381,17 @@ deleteBtn.forEach(btn => {
     });
 });
 
-cancel.addEventListener("click", () => {
-    modalContainer.style.display = "none";
-    document.body.classList.remove('nav-active');
+cancel.forEach(c => {
+    c.addEventListener("click", () => {
+        modalContainer.style.display = "none";
+        editModal.style.display = "none";
+        deleteModal.style.display = "none";
+        document.body.classList.remove('nav-active');
+
+    });
 });
 
+window.addEventListener("load", () => {
+    setCurrentDate();
+    setCurrentTime();
+})

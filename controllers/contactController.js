@@ -39,6 +39,7 @@ const handleContactMessage = async (req, res) => {
     await Message.create({
       name: name,
       email: email,
+      contact: req.user.contact,
       message: request,
     });
     setTimeout(() => {

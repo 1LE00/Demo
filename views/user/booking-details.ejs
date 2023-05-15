@@ -25,7 +25,7 @@
 
                                 <% if (bookings.length> 0) { %>
                                     <div class="sub-title">
-                                        <h2>Upcoming Reservations</h2>
+                                        <h2 class="uppercase" style="font-weight:600; letter-spacing: 5px; line-height: 1.5">Upcoming Reservations</h2>
                                     </div>
 
                                     <div id="bookings-table" class="flex">
@@ -108,18 +108,36 @@
 
                     <div class="modal-container flex flex-column">
                         <div class="modal-content w-100">
-                            <div class="action-confirmation-box flex flex-column">
-                                <h2 class="modal-heading w-100"></h2>
-                                <p class="modal-message ac-modal-message"></p>
-                                <div class="btn flex">
-                                    <button id="ac-ok" class="uppercase">Yes</button>
-                                    <button id="ac-cancel" class="uppercase">No</button>
+                            <div class="edit-launch flex" style="display: none;">
+                                <div class="action-confirmation-box ed-action-confirmation-box flex flex-column w-100">
+                                    <h2 class="modal-heading w-100">Edit Reservation</h2>
+                                    <p class="modal-message ed-ac-modal-message"></p>
+                                    <div class="btn flex">
+                                        <button id="ed-ac-ok" class="uppercase">Yes</button>
+                                        <button id="ed-ac-cancel" class="uppercase" data-cancel>No</button>
+                                    </div>
+                                </div>
+                                <div class="action-result-box ed-action-result-box flex flex-column gone w-100">
+                                    <p class="modal-message ed-ar-modal-message"></p>
+                                    <div class="btn flex">
+                                        <button id="ed-ar-ok" class="uppercase">Okay</button>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="action-result-box flex flex-column gone">
-                                <p class="modal-message ar-modal-message"></p>
-                                <div class="btn flex">
-                                    <button id="ar-ok" class="uppercase">Okay</button>
+                            <div class="delete-launch flex" style="display:none">
+                                <div class="action-confirmation-box del-action-confirmation-box flex flex-column w-100">
+                                    <h2 class="modal-heading w-100">Cancel Reservation</h2>
+                                    <p class="modal-message del-ac-modal-message"></p>
+                                    <div class="btn flex">
+                                        <button id="del-ac-ok" class="uppercase">Yes</button>
+                                        <button id="del-ac-cancel" class="uppercase" data-cancel>No</button>
+                                    </div>
+                                </div>
+                                <div class="action-result-box del-action-result-box flex flex-column gone w-100">
+                                    <p class="modal-message del-ar-modal-message"></p>
+                                    <div class="btn flex">
+                                        <button id="del-ar-ok" class="uppercase">Okay</button>
+                                    </div>
                                 </div>
                             </div>
                             <form action="/bookings/:id" method="post" style="display: none"
