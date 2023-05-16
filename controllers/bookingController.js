@@ -127,32 +127,55 @@ const handleBooking = async (req, res) => {
           filtertables(tableData, bookedTables);
         } else {
           switch (partySize) {
+            case 1:
+              break;
+            case 2:
+              break;
             case 3:
               switchCaseChecker(4, bookedTables);
+              break;
+            case 4:
               break;
             case 5:
               switchCaseChecker(6, bookedTables);
               break;
+            case 6:
+              break;
             case 7:
               switchCaseChecker(8, bookedTables);
+              break;
+            case 8:
               break;
             case 9:
               switchCaseChecker(10, bookedTables);
               break;
+            case 10:
+              break;
             case 11:
               switchCaseChecker(12, bookedTables);
+              break;
+            case 12:
               break;
             case 13:
               switchCaseChecker(14, bookedTables);
               break;
+            case 14:
+              break;
             case 15:
               switchCaseChecker(16, bookedTables);
+              break;
+            case 16:
               break;
             case 17:
               switchCaseChecker(18, bookedTables);
               break;
+            case 18:
+              break;
             case 19:
               switchCaseChecker(20, bookedTables);
+              break;
+            case 20:
+              res.send({booked:false, message: "There are no tables of size " + partySize + " available at the moment."});
               break;
             default:
               break;

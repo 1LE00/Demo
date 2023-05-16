@@ -98,6 +98,16 @@ router.
         })
     });
 
+    router.
+    route("/review")
+    .get(verifyAuthentication, async (req, res) => {
+        const user = await User.findOne({ username: req.user.username });
+        res.render("user/review", {
+            username: user.name,
+            loggedIn: true
+        })
+    });
+
 router.
     route("/waitlist")
     .get(verifyAuthentication, async (req, res) => {

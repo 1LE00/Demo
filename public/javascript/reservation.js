@@ -398,8 +398,12 @@ if (form != null) {
             dinerTime.innerHTML = bookingTime.innerHTML;
             dinerValue.innerHTML = bookingDiner.innerHTML;
           } else {
-            confirmationModal.classList.add("gone");
-            bookingFailure.classList.add("show");
+            if(responseText.message && !responseText.booked){
+              console.log(responseText.message);
+            }else{
+              confirmationModal.classList.add("gone");
+              bookingFailure.classList.add("show");
+            }
           }
         }
       }

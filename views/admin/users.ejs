@@ -37,7 +37,8 @@
                                             </span>
                                             <span>
                                                 <span class="key">Name:</span>
-                                                <span class="value" style="color:  #f1c40f">"<%= users[i].name %>"</span>
+                                                <span class="value" style="color:  #f1c40f">"<%= users[i].name %>
+                                                        "</span>
                                             </span>
                                             <span>
                                                 <span class="key">Email:</span>
@@ -52,9 +53,6 @@
                                             </span>
                                         </div>
                                         <div class="card-actions available-users-card-actions flex">
-                                            <button class="launch-edit-modal" data-id-holder="<%= users[i]._id %>">
-                                                <img src="/images/pen-to-square-regular.svg" alt="">
-                                            </button>
                                             <button class="launch-delete-modal" data-id-holder="<%= users[i]._id %>">
                                                 <img src="/images/trash-solid.svg" alt="">
                                             </button>
@@ -73,9 +71,30 @@
                                 </div>
                                 <% } %>
                     </div>
+                    <div class="modal-container flex flex-column">
+                        <div class="modal-content w-100">
+                            <div class="delete-launch flex" style="display:none">
+                                <div class="action-confirmation-box del-action-confirmation-box flex flex-column w-100">
+                                    <h2 class="modal-heading w-100">Delete User</h2>
+                                    <p class="modal-message del-ac-modal-message"></p>
+                                    <div class="btn flex">
+                                        <button id="del-ac-ok" class="uppercase">Yes</button>
+                                        <button id="del-ac-cancel" class="uppercase" data-cancel>No</button>
+                                    </div>
+                                </div>
+                                <div class="action-result-box del-action-result-box flex flex-column gone w-100">
+                                    <p class="modal-message del-ar-modal-message"></p>
+                                    <div class="btn flex">
+                                        <button id="del-ar-ok" class="uppercase">Okay</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             </main>
         </div>
         <script src="/javascript/admin/index.js"></script>
+        <script src="/javascript/admin/user.js"></script>
     </body>
 
     </html>

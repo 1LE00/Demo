@@ -8,23 +8,49 @@
                 <img class="logo" src="/images/logo.svg" alt="logo">
             </a>
         </li>
-        <li>
-            <a href="/reserva/bookings" class="uppercase" id="bookings">
-                <img src="" alt="">
-                <span>
-                    Bookings
-                </span>
-            </a>
+        <li class="uppercase" id="bookings-container">
+            Bookings
+            <ul class="dropdown-container">
+                <li>
+                    <a href="/reserva/bookings" class="uppercase" id="bookings">
+                        <img src="" alt="">
+                        <span>
+                            Show Bookings
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/reserva/bookings/all" class="uppercase" id="bookings">
+                        <img src="" alt="">
+                        <span>
+                            All Bookings
+                        </span>
+                    </a>
+                </li>
+            </ul>
         </li>
-        <li>
-            <a href="/reserva/tables" class="uppercase" id="tables">
-                <img src="" alt="">
-                <span>
-                    Tables
-                </span>
-            </a>
+        <li class="uppercase" id="tables-container">
+            Tables
+            <ul class="dropdown-container">
+                <li>
+                    <a href="/reserva/tables" class="uppercase" id="tables">
+                        <img src="" alt="">
+                        <span>
+                            Show Tables
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/reserva/tables/add" class="uppercase" id="add-tables">
+                        <img src="" alt="">
+                        <span>
+                            Add Tables
+                        </span>
+                    </a>
+                </li>
+            </ul>
         </li>
-        <li>
+        <li class="users">
             <a href="/reserva/users" class="uppercase" id="users">
                 <img src="" alt="">
                 <span>
@@ -32,7 +58,7 @@
                 </span>
             </a>
         </li>
-        <li>
+        <li class="waitlists-nav">
             <a href="/reserva/waitlists" class="uppercase" id="waitlists">
                 <img src="" alt="">
                 <span>
@@ -41,7 +67,7 @@
             </a>
         </li>
 
-        <li>
+        <li class="messages">
             <a href="/reserva/messages" class="uppercase" id="messages">
                 <img src="" alt="">
                 <span>
@@ -49,15 +75,28 @@
                 </span>
             </a>
         </li>
-        <li>
-            <a href="/reserva/dishes" class="uppercase" id="dishes">
-                <img src="" alt="">
-                <span>
-                    Dishes
-                </span>
-            </a>
+        <li class="uppercase" id="dishes-container">
+            Dishes
+            <ul class="dropdown-container">
+                <li>
+                    <a href="/reserva/dishes" class="uppercase" id="dishes">
+                        <img src="" alt="">
+                        <span>
+                            Show Dishes
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/reserva/dishes/add" class="uppercase" id="add-dishes">
+                        <img src="" alt="">
+                        <span>
+                            Add Dishes
+                        </span>
+                    </a>
+                </li>
+            </ul>
         </li>
-        <li>
+        <li class="events">
             <a href="/reserva/events" class="uppercase" id="events">
                 <img src="" alt="">
                 <span>
@@ -65,7 +104,7 @@
                 </span>
             </a>
         </li>
-        <li>
+        <li class="logout-route">
             <form action="/logout" method="post" class="flex">
                 <button class="uppercase user-link text-left" type="submit">Log Out</button>
             </form>

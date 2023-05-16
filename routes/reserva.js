@@ -5,6 +5,7 @@ const User = require("../model/Users");
 const Booking = require("../model/Bookings");
 const Waitlist = require("../model/Waitlist");
 const Message = require("../model/Messages");
+const Dish = require("../model/Dish");
 const { Table } = require("../model/Tables");
 
 passport.use(User.createStrategy());
@@ -50,11 +51,14 @@ router.route("/bookings")
         });
         console.log("filtered Bookings");
         console.log(filteredBookings);
-        res.render("admin/bookings", { bookings: filteredBookings });
+        res.render("admin/bookings", { title: "Upcoming Reservations", bookings: filteredBookings });
     })
-    .delete(verifyAdmin, async (req, res) => {
 
-    });
+router.route("/bookings/all")
+    .get(verifyAdmin, async (req, res) => {
+        const bookings = await Booking.find({}).populate("assignedTable").exec();
+        res.render("admin/bookings", { title: "All Reservations", bookings: bookings });
+    })
 
 router.route("/tables")
     .get(verifyAdmin, async (req, res) => {
@@ -63,8 +67,48 @@ router.route("/tables")
         console.log(tables);
         res.render("admin/tables", { tables: tables });
     })
-    .delete(verifyAdmin, async (req, res) => {
 
+router.route("/tables/add")
+    .get(verifyAdmin, async (req, res) => {
+        res.render("admin/addTables");
+    })
+    .post(verifyAdmin, async (req, res) => {
+        const { tableNumber, seatingCapacity } = req.body;
+        const tableNumberExists = await Table.findOne({tableNumber: tableNumber}).exec();
+        if(tableNumberExists){
+            const data = {error: "Table Number " + tableNumber + " already exists", existingTable: tableNumberExists}
+            res.send(data);
+        }else{
+            const createdTable = await Table.create({
+                tableNumber: parseInt(tableNumber),
+                seatingCapacity: parseInt(seatingCapacity)
+            });
+            const data = {tableCreated: createdTable}
+            res.send(data);
+        }
+    });
+
+
+router
+    .route("/tables/:id")
+    .delete(verifyAdmin, async (req, res) => {
+        const ID = req.params.id;
+        console.log(ID);
+        try {
+            const delBookings = await Booking.deleteMany({ assignedTable: ID }).exec();
+            const deletedRecord = await Table.findByIdAndDelete(ID).exec();
+            if (!null) {
+                console.log(deletedRecord);
+                console.log(delBookings);
+                res.send({ status: true, deletedId: deletedRecord, deletedBookings: delBookings });
+            } else {
+                res.send({ status: false, message: `Table ID: ${ID} doesnt exist` });
+            }
+        } catch (error) {
+            if (error) {
+                console.log(error);
+            }
+        }
     });
 
 router.route("/users")
@@ -76,6 +120,26 @@ router.route("/users")
     })
     .delete(verifyAdmin, async (req, res) => {
 
+    });
+
+router
+    .route("/users/:id")
+    .delete(verifyAdmin, async (req, res) => {
+        const ID = req.params.id;
+        console.log(ID);
+        try {
+            const deletedRecord = await User.findByIdAndDelete(ID).exec();
+            if (!null) {
+                console.log(deletedRecord);
+                res.send({ status: true, deletedId: deletedRecord });
+            } else {
+                res.send({ status: false, message: `User ID: ${ID} doesnt exist` });
+            }
+        } catch (error) {
+            if (error) {
+                console.log(error);
+            }
+        }
     });
 
 router.route("/waitlists")
@@ -104,16 +168,88 @@ router.route("/messages")
         console.log(messages);
         res.render("admin/messages", { messages: messages });
     })
-    .delete(verifyAdmin, async (req, res) => {
 
+router
+    .route("/messages/:id")
+    .delete(verifyAdmin, async (req, res) => {
+        const ID = req.params.id;
+        console.log(ID);
+        try {
+            const deletedRecord = await Message.findByIdAndDelete(ID).exec();
+            if (!null) {
+                console.log(deletedRecord);
+                res.send({ status: true, deletedId: deletedRecord });
+            } else {
+                res.send({ status: false, message: `Message ID: ${ID} doesnt exist` });
+            }
+        } catch (error) {
+            if (error) {
+                console.log(error);
+            }
+        }
     });
 
 router.route("/dishes")
     .get(verifyAdmin, async (req, res) => {
-        const dishes = await Dish.find({}).exec();
-        console.log("All dishes");
-        console.log(dishes);
-        res.render("admin/dishes", { dishes: dishes });
+        const insertedDishes = await Dish.find({}).exec();
+        res.render("admin/dishes", { dishes: insertedDishes });
+    })
+    .delete(verifyAdmin, async (req, res) => {
+
+    });
+
+router.route("/dishes/add")
+    .get(verifyAdmin, async (req, res) => {
+        res.render("admin/addDishes");
+    })
+    .post(verifyAdmin, async (req, res) => {
+        const { name, description, price, imagePath } = req.body;
+        const createdDish = await Dish.create({
+            name: name,
+            description: description,
+            price: parseInt(price),
+            imagePath: imagePath
+        });
+        res.send({ createdDish })
+    });
+
+router
+    .route("/dishes/:id")
+    .post(verifyAdmin, async (req, res) => {
+        const ID = req.params.id;
+        const { name, description, price } = req.body;
+        console.log(ID);
+        try {
+            const updatedRecord = await Dish.findByIdAndUpdate(ID, { name: name, description: description, price: parseInt(price) }, { new: true }).exec();
+            console.log(updatedRecord);
+            res.send({ status: true, updatedRecord: ID });
+        } catch (error) {
+            if (error) {
+                console.error(error);
+            }
+        }
+    })
+    .delete(verifyAdmin, async (req, res) => {
+        const ID = req.params.id;
+        console.log(ID);
+        try {
+            const deletedRecord = await Dish.findByIdAndDelete(ID).exec();
+            if (!null) {
+                console.log(deletedRecord);
+                res.send({ status: true, deletedId: deletedRecord });
+            } else {
+                res.send({ status: false, message: `Meal ID: ${ID} doesnt exist` });
+            }
+        } catch (error) {
+            if (error) {
+                console.log(error);
+            }
+        }
+    });
+
+router.route("/events")
+    .get(verifyAdmin, async (req, res) => {
+        res.render("admin/events");
     })
     .delete(verifyAdmin, async (req, res) => {
 
